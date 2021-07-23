@@ -10,7 +10,7 @@
 
 <body>
     <?php
-include '/components/header.php';
+include 'components/header.php';
 ?>
     <main>
         <form id="issue-report" method="POST" action="components/mail.php">
