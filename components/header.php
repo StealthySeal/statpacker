@@ -4,7 +4,7 @@ echo('
 <header>
         <nav class="navigation">
             <span id="logo">
-                <img src="resauces/image/logo_greenBresized.png" alt="site logo">
+                <img src="resources/image/logo_greenBresized.png" alt="site logo">
             </span>
             <div>
                 <ul>
