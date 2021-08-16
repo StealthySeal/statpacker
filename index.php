@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Hey pal, wanna buy some camping gear?</title>
+    <title>Hey kid, wanna buy some camping gear?</title>
     <meta name="description" content="Find stats and info for camping gear." />
     <link rel="stylesheet" type="text/css" href="resources/css/base.css" />
     <link rel="icon" href="resources/image/logoC.png">
