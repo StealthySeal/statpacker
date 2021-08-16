@@ -1,10 +1,9 @@
 
-<!doctype HTML>
 <html>
 <head>
   <meta charset="utf-8" />
   <title>Valuable gear statistics</title>
-  <link rel="stylesheet" type="text/css" href="/statpacker/resources/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="./resources/css/styles.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
@@ -12,34 +11,32 @@
 
 
 <?php
-include '/components/getColumns.php';
-$cID=$_GET['cID']; //get selected category ID 
-$columns1 = getColumns('item');
-$columns2 = getColumns('attribute');
-$columns = array_merge($columns1, $columns2);
+include './components/getColumns.php';
+$CategoryName=$_GET['name']; 
+
+
 
 ?>
 
 
 <header>
 <?php
-include '/resources/env.php';
-
-$categoryNameData = $pdo->query("SELECT `CName` FROM `category` WHERE `cID` = $cID")->fetchAll();
-foreach ($categoryNameData as $row) {
-    echo '<h1> <a href="index.php">Statpacker.com</a><br>' .  $row['CName'] . " " . 'statpage</h1>';}
+include './resources/env.php';
+    echo '<h1> <a href="index.php">Statpacker.com</a><br>' .  $CategoryName . " " . 'statpage</h1>';
 ?>
+  
 
+  
 <div class="dropdown">
   <button class="dropbtn">Order</button>
   <div class="dropdown-content">
     <?php 
 
-$data = $pdo->query("SELECT  attribute.*, item.* FROM item INNER JOIN attribute ON item.iID = attribute.iID WHERE item.cID = $cID")->fetchAll();
+$data = $pdo->query("SELECT  * FROM $CategoryName")->fetchAll();
+$columns = getColumns($CategoryName);
 foreach($columns as $column){
-echo "<a href=statpage.php?cID=$cID&order=$column>$column</a><br>";
+echo "<a href=statpage.php?name=$CategoryName&order=$column>$column</a><br>";
 }
-
     ?>
   </div>
 </div>
@@ -48,10 +45,10 @@ echo "<a href=statpage.php?cID=$cID&order=$column>$column</a><br>";
   <button class="dropbtn">Filter</button>
   <div class="dropdown-content">
     <?php 
-$data = $pdo->query("SELECT  attribute.*, item.* FROM item INNER JOIN attribute ON item.iID = attribute.iID WHERE item.cID = $cID ")->fetchAll();
+$data = $pdo->query("SELECT  * FROM $CategoryName")->fetchAll();
+$columns = getColumns($CategoryName);
 foreach($columns as $column){
-echo " <input type='checkbox' id='$column' name='order' value='$column'> <label for='$column'>$column</label><br>";
-}
+echo "<input type ='checkbox' id='$column' name='filter' value='$column'> <label for'$column>$column</label><br>";}
     ?>
   </div>
 </div>
@@ -65,7 +62,7 @@ echo " <input type='checkbox' id='$column' name='order' value='$column'> <label 
 
 $orderBy="brand";
 if (isset($_GET['order'])){ $orderBy = $_GET['order'];}
-$data = $pdo->query("SELECT  attribute.*, item.* FROM item INNER JOIN attribute ON item.iID = attribute.iID WHERE item.cID = $cID ORDER BY $orderBy")->fetchAll();
+$data = $pdo->query("SELECT  * FROM $CategoryName")->fetchAll();
 echo '<table><tr>';
 echo '<tr>';
 foreach($columns as $column){ 

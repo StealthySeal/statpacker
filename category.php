@@ -2,14 +2,13 @@
 <?php
 include 'resources/env.php';
 
-$sql = "SELECT * FROM `category`";
+$sql = "SELECT * FROM `categories`";
 
-$data = $pdo->query("SELECT * FROM category")->fetchAll();
+$data = $pdo->query("SELECT * FROM categories")->fetchAll();
 // and somewhere later:
 foreach ($data as $row) {
-  $cID = $row['cID'];
-  $name = $row['CName']."<br />\n";
-  echo("<a href=statpage.php?cID=$cID>$name</a>");
+  $name = $row['Name'];
+  echo("<a href=statpage.php?name=$name>$name</a> <br> ");
 
 
     

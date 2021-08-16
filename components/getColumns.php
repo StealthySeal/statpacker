@@ -4,7 +4,7 @@
 
 //Get Columns
 function getColumns($tablenames) {
-  include 'env.php';
+  include './resources/env.php';
 
   try {
   
@@ -23,9 +23,9 @@ function getColumns($tablenames) {
   }
   }
 
-/* Get and print columns of item
+/* Get and print column names of item
 
-  $columns = getColumns('item');
+  $columns = getColumns('category');
   foreach($columns as $column) { echo($column); }
 
   
